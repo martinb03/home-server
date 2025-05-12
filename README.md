@@ -16,4 +16,4 @@ Storage:
 Case: CoolerMaster Silencio 650  
 Cooling: 3x120mm CoolerMaster Fans (included with case)  
 
-![ss](N:\Git Documentation\home-server\Docs\images\Server.jpg)
+![Server](https://github.com/martinb03/home-server/blob/main/Docs/images/Server.jpg)
