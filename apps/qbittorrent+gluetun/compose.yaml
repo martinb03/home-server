@@ -1,0 +1,73 @@
+#This is a compose file for qBitTorrent intended to route its traffic through a gluetun container using a VPN provider
+#The file is made to be used as a TrueNAS Scale custom app via YAML, currently used on v.25.04.2.4
+
+
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    environment:
+      - TZ=T/Z # Time Zone
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=wireguard
+      - FIREWALL_VPN_INPUT_PORTS=port # vpn provider forwarded port
+      - DOT=on
+    ports:
+      - port:port # vpn provider forwarded port
+      - "8080:8080/tcp" # qbittorrent web interface
+    volumes:
+      - /mnt/path/to/gluetun/config:/gluetun # insert path to container config
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/path/to/gluetun/wireguard:/gluetun/wireguard # insert path to generated config file from VPN provider
+    
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 20s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    restart: unless-stopped
+    labels:
+      - deunhealth.restart.on.unhealthy=true
+    environment:
+      - PUID=1000 # change if needed 
+      - PGID=1000 # change if needed
+      - TZ=TZ # Time Zone
+      - WEBUI_PORT=8080 # must match "qbittorrent web interface" port number in gluetun's service above
+      - TORRENTING_PORT=port # vpn provider forwarded port
+    volumes:
+      - /mnt/path/to/qbittorrent:/config # insert path to container config
+      - /mnt/path/to/downloads:/downloads # insert path to downloads
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    network_mode: service:gluetun
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 60s
+      retries: 3
+      start_period: 20s
+      timeout: 10s
+
+  deunhealth:
+    image: qmcgaw/deunhealth
+    container_name: deunhealth
+    network_mode: "none"
+    environment:
+      - LOG_LEVEL=info
+      - HEALTH_SERVER_ADDRESS=127.0.0.1:9999
+      - TZ=T/Z    # Time Zone
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
