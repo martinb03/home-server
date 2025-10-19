@@ -1,9 +1,7 @@
 FROM vbatts/slackware:14.2
 # --- Basic network and editing utilities ---
 # Create a minimal /etc/resolv.conf so slackpkg and wget can reach mirrors
-RUN mkdir -p /etc && \
-    echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
-    echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+RUN echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8" > /etc/resolv.conf
 
 # Install nano and iputils (for ping)
 RUN wget http://slackware.uk/slackware/slackware64-14.2/slackware/ap/nano-2.5.3-x86_64-1.txz && \
