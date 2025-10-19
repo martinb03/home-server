@@ -1,7 +1,5 @@
 FROM vbatts/slackware:14.2
 # --- Basic network and editing utilities ---
-# Create a minimal /etc/resolv.conf so slackpkg and wget can reach mirrors
-RUN echo -e "nameserver 1.1.1.1\nnameserver 8.8.8.8" > /etc/resolv.conf
 
 # Install nano and iputils (for ping)
 RUN wget http://slackware.uk/slackware/slackware64-14.2/slackware/ap/nano-2.5.3-x86_64-1.txz && \
@@ -25,3 +23,6 @@ RUN wget https://slackbuilds.org/slackbuilds/14.2/network/quagga.tar.gz && \
 ENV LC_ALL=C
 COPY netreset.sh /usr/local/bin/netreset.sh
 RUN chmod +x /usr/local/bin/netreset.sh
+
+# --- Run the script automatically on container start ---
+CMD ["/bin/bash", "-c", "/usr/local/bin/netreset.sh && exec /bin/bash"]
