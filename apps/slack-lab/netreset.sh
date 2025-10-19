@@ -14,11 +14,11 @@ done
 
 # --- 2. Flush and reset interfaces ---
 echo "[*] Flushing interfaces..."
-for iface in $(ip -o link show | awk -F': ' '{print $2}' | grep -v lo); do
-  echo " - Resetting $iface"
-  ip addr flush dev "$iface"
-  ip link set "$iface" down
-  ip link set "$iface" up
+for iface in $(ip -o link show | awk -F': ' '{print $2}' | grep -v lo | cut -d'@' -f1); do
+  echo " - Clearing $iface"
+  ip addr flush dev "$iface" 2>/dev/null
+  ip link set "$iface" down 2>/dev/null
+  echo "   $iface flushed and brought down."
 done
 
 # --- 3. Clear all routing tables ---
