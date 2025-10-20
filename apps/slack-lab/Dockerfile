@@ -3,9 +3,6 @@ FROM vbatts/slackware:14.2
 
 # Locale fix for slackpkg warnings
 ENV LC_ALL=C
-# To make 'nano' usable
-ENV TERM=xterm
-
 
 COPY netreset.sh /usr/local/bin/netreset.sh
 RUN chmod +x /usr/local/bin/netreset.sh
@@ -26,6 +23,9 @@ RUN groupadd -g 92 quagga && \
     usermod -a -G quaggavt quagga && \
     mkdir -p /var/run/quagga /var/log/quagga /etc/quagga && \
     chown -R quagga:quagga /var/run/quagga /var/log/quagga /etc/quagga
+
+# --- To make 'nano' usable ---
+ENV TERM=xterm
 
 # --- Run the script automatically on container start ---
 CMD ["/bin/bash", "-c", "/usr/local/bin/netreset.sh && exec /bin/bash"]
