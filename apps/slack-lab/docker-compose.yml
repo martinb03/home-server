@@ -16,6 +16,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc01
     hostname: pc01
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -28,6 +29,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc02
     hostname: pc02
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -40,6 +42,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc03
     hostname: pc03
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -52,6 +55,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc04
     hostname: pc04
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -64,6 +68,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc05
     hostname: pc05
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -76,6 +81,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc06
     hostname: pc06
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -88,6 +94,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc07
     hostname: pc07
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -100,6 +107,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc08
     hostname: pc08
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -112,6 +120,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc09
     hostname: pc09
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -124,6 +133,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc10
     hostname: pc10
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -136,6 +146,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc11
     hostname: pc11
+    privileged: true
     tty: true
     stdin_open: true
     networks:
@@ -148,6 +159,7 @@ services:
     image: martinb03/slackware-lab:14.2
     container_name: pc12
     hostname: pc12
+    privileged: true
     tty: true
     stdin_open: true
     networks:

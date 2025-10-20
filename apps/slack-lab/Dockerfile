@@ -3,6 +3,9 @@ FROM vbatts/slackware:14.2
 
 # Locale fix for slackpkg warnings
 ENV LC_ALL=C
+# To make 'nano' usable
+ENV TERM=xterm
+
 
 COPY netreset.sh /usr/local/bin/netreset.sh
 RUN chmod +x /usr/local/bin/netreset.sh
