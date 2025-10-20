@@ -1,17 +1,19 @@
 version: "3.9"
 
+#  Virtual internal network (isolated playground)
 networks:
   slacknet:
     driver: bridge
-   # internal: true
+    internal: true          # keeps this LAN completely offline
     ipam:
       config:
         - subnet: 192.168.0.0/24
           gateway: 192.168.0.1
 
+#   12 Slackware "PCs"
 services:
   pc01:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc01
     hostname: pc01
     tty: true
@@ -21,10 +23,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #01"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc02:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc02
     hostname: pc02
     tty: true
@@ -34,10 +35,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #02"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc03:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc03
     hostname: pc03
     tty: true
@@ -47,10 +47,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #03"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc04:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc04
     hostname: pc04
     tty: true
@@ -60,10 +59,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #04"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc05:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc05
     hostname: pc05
     tty: true
@@ -73,10 +71,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #05"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc06:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc06
     hostname: pc06
     tty: true
@@ -86,10 +83,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #06"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc07:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc07
     hostname: pc07
     tty: true
@@ -99,10 +95,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #07"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc08:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc08
     hostname: pc08
     tty: true
@@ -112,10 +107,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #08"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc09:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc09
     hostname: pc09
     tty: true
@@ -125,10 +119,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #09"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc10:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc10
     hostname: pc10
     tty: true
@@ -138,10 +131,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #10"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc11:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc11
     hostname: pc11
     tty: true
@@ -151,10 +143,9 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #11"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
 
   pc12:
-    build: .
+    image: martinb03/slackware-lab:14.2
     container_name: pc12
     hostname: pc12
     tty: true
@@ -164,4 +155,4 @@ services:
     labels:
       com.docker.compose.description: "Slackware virtual PC #12"
       netlab.role: "host"
-      netlab.group: "slackware-lab"
+
