@@ -26,6 +26,7 @@ RUN groupadd -g 92 quagga && \
 
 # --- To make 'nano' usable ---
 ENV TERM=xterm
+RUN echo "export TERM=xterm" >> /etc/profile
 
 # --- Run the script automatically on container start ---
 CMD ["/bin/bash", "-c", "/usr/local/bin/netreset.sh && exec /bin/bash"]
