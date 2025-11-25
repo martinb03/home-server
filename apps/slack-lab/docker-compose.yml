@@ -9,12 +9,12 @@ networks:
       config:
         - subnet: 192.168.0.0/24
         
-  slacknet1:
-    driver: bridge
-    internal: true
-    ipam:
-      config:
-        - subnet: 192.168.1.0/24
+     #slacknet1:
+    #driver: bridge
+   # internal: true
+  #  ipam:
+ #     config:
+#        - subnet: 192.168.1.0/24
 
 #   12 Slackware "PCs"
 services:
@@ -27,7 +27,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+     # - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #01"
       netlab.role: "host"
@@ -41,7 +41,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+    #  - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #02"
       netlab.role: "host"
@@ -55,7 +55,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+    #  - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #03"
       netlab.role: "host"
@@ -69,7 +69,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+    #  - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #04"
       netlab.role: "host"
@@ -83,7 +83,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+    #  - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #05"
       netlab.role: "host"
@@ -97,7 +97,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+     # - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #06"
       netlab.role: "host"
@@ -111,7 +111,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+     # - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #07"
       netlab.role: "host"
@@ -125,7 +125,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+    #  - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #08"
       netlab.role: "host"
@@ -139,7 +139,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+    #  - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #09"
       netlab.role: "host"
@@ -153,7 +153,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+    #  - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #10"
       netlab.role: "host"
@@ -167,7 +167,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+     # - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #11"
       netlab.role: "host"
@@ -181,7 +181,7 @@ services:
     stdin_open: true
     networks:
       - slacknet
-      - slacknet1
+    #  - slacknet1
     labels:
       com.docker.compose.description: "Slackware virtual PC #12"
       netlab.role: "host"
