@@ -9,11 +9,13 @@ Motherboard:    AsRock B365 Pro4
 Memory:         2x16GB DDR4 2666MHz  
 Power Supply:   bequiet! SYSTEM POWER 10 550W  
   
-Storage:        2x128GB(in mirror) SATA SSD Drives - Boot Drive
-                2x256GB(in mirror) NVMe SSD Drives - Services
-                2x2TB(in mirror) WD Red Pros - Mass Storage
+Storage:        
+Boot Drive - 2x128GB SATA SSDs (in mirror)
+Services - 2x256GB NVMe SSDs (in mirror)
+Mass Storage - 2x2TB WD Red Pros (in mirror)
 
 Case:           CoolerMaster Silencio 650  
 Cooling:        3x120mm CoolerMaster Fans (included with case)  
+
 
 ![Server](https://github.com/martinb03/home-server/blob/main/assets/images/Server.jpg)
